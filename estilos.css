@@ -1,0 +1,860 @@
+/**
+ * Estilos CSS para el sistema de gestión de la organización
+ * Semana 6 - Programación Web 2
+ */
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header y navegación */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    border-radius: 25px;
+    margin: 0 5px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-weight: 600;
+}
+
+nav a:hover,
+nav a.active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+/* Main content */
+main {
+    padding: 2rem 0;
+}
+
+/* Secciones */
+.formulario-seccion,
+.lista-seccion,
+.consultas-seccion,
+.reporte-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.formulario-seccion h2,
+.lista-seccion h2,
+.consultas-seccion h2,
+.reporte-container h3 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+    font-weight: 600;
+}
+
+/* Mensajes de estado */
+.mensaje {
+    padding: 12px 20px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.mensaje.exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.mensaje.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Formularios */
+.formulario {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Mensajes de error en formularios */
+.error-mensaje {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+    font-weight: 500;
+}
+
+/* Botones */
+.btn-submit {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    justify-self: start;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* Tablas */
+.tabla-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 0.9rem;
+}
+
+.tabla-datos thead {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.tabla-datos th,
+.tabla-datos td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.tabla-datos th {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.8rem;
+}
+
+.tabla-datos tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.tabla-datos tbody tr:nth-child(even) {
+    background-color: #fbfbfb;
+}
+
+/* Tablas de reportes */
+.tabla-reporte th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.tabla-reporte .badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-donaciones {
+    background-color: #007bff;
+    color: white;
+}
+
+.badge-completado {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-avanzado {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.badge-progreso {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-inicial {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Estadísticas */
+.estadisticas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.estadistica-item {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    transition: transform 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.estadistica-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.estadistica-item h4 {
+    color: #6c757d;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.numero-grande {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #667eea;
+    line-height: 1;
+}
+
+.proyecto-destacado {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    grid-column: span 2;
+}
+
+.proyecto-destacado h4 {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.proyecto-nombre {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.donaciones-count {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Posiciones en ranking */
+.posicion {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Descripción de reportes */
+.descripcion-reporte {
+    background: rgba(102, 126, 234, 0.1);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #667eea;
+    font-style: italic;
+}
+
+/* Sin datos */
+.sin-datos {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 2px dashed #dee2e6;
+}
+
+.sin-datos em {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Página de inicio */
+.hero-section {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.hero-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.acciones-principales {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.accion-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+}
+
+.accion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+    border-color: #667eea;
+}
+
+.accion-card h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.accion-card p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.btn-accion {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-accion:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Estilos para tarjetas de proyectos estilo Semana 5 */
+.cuadricula-proyectos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tarjeta-proyecto {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.tarjeta-proyecto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.cabecera-proyecto {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.cabecera-proyecto h3 {
+    color: #667eea;
+    font-size: 1.3rem;
+    margin: 0;
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.estado-proyecto {
+    background: #28a745;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.estado-proyecto.activo {
+    background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.contenido-proyecto .descripcion {
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.progreso-proyecto {
+    margin-bottom: 1.5rem;
+}
+
+.barra-progreso {
+    background: #e9ecef;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.relleno-progreso {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.8s ease;
+}
+
+.texto-progreso {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.detalles-proyecto {
+    margin-bottom: 1.5rem;
+}
+
+.detalles-proyecto p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.acciones-proyecto {
+    display: flex;
+    gap: 1rem;
+}
+
+.boton-donar {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.boton-donar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.boton-ver-mas {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 2px solid #667eea;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.boton-ver-mas:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Estilos para eventos */
+.cuadricula-eventos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tarjeta-evento {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.tarjeta-evento:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.cabecera-evento {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.cabecera-evento h3 {
+    color: #2c5530;
+    font-size: 1.2rem;
+    margin: 0;
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.tipo-evento {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.detalles-evento p {
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.acciones-evento {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.boton-participar {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.boton-participar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.boton-compartir {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    border: 2px solid #667eea;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.boton-compartir:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Estilos para categorías de proyectos */
+.tarjeta-proyecto.educacion {
+    border-left: 5px solid #007bff;
+}
+
+.tarjeta-proyecto.salud {
+    border-left: 5px solid #dc3545;
+}
+
+.tarjeta-proyecto.ambiente {
+    border-left: 5px solid #28a745;
+}
+
+.tarjeta-proyecto.social {
+    border-left: 5px solid #6f42c1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        padding: 10px 15px;
+    }
+    
+    .formulario-seccion,
+    .lista-seccion,
+    .consultas-seccion {
+        padding: 1rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+    }
+    
+    .numero-grande {
+        font-size: 2rem;
+    }
+    
+    .proyecto-destacado {
+        grid-column: span 1;
+    }
+    
+    .tabla-container {
+        font-size: 0.8rem;
+    }
+    
+    .tabla-datos th,
+    .tabla-datos td {
+        padding: 8px 10px;
+    }
+    
+    .cuadricula-proyectos,
+    .cuadricula-eventos {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .acciones-proyecto,
+    .acciones-evento {
+        flex-direction: column;
+    }
+    
+    .cabecera-proyecto,
+    .cabecera-evento {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .cabecera-proyecto h3,
+    .cabecera-evento h3 {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .estadisticas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .acciones-principales {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-submit {
+        width: 100%;
+    }
+    
+    .cuadricula-proyectos {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .tarjeta-proyecto,
+    .tarjeta-evento {
+        padding: 1rem;
+    }
+    
+    .grupo-campos {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .botones-monto {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-monto {
+        width: 100%;
+    }
+}
+
+/* Estilos adicionales para mejorar la consistencia visual */
+.mensaje-bienvenida {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    border-left: 4px solid #667eea;
+}
+
+.mensaje-bienvenida h3 {
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+/* Mejorar botones secundarios */
+.btn-secundario {
+    background: rgba(255, 255, 255, 0.9);
+    color: #667eea;
+    border: 2px solid #667eea;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-secundario:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Mejorar alertas */
+.alerta {
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border-left: 4px solid;
+}
+
+.alerta-info {
+    background: rgba(23, 162, 184, 0.1);
+    border-left-color: #17a2b8;
+    color: #0c5460;
+}
+
+.alerta-warning {
+    background: rgba(255, 193, 7, 0.1);
+    border-left-color: #ffc107;
+    color: #856404;
+}
+
+/* Tarjetas con hover mejorado */
+.tarjeta-hover {
+    transition: all 0.3s ease;
+}
+
+.tarjeta-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
