@@ -12,6 +12,12 @@ function mostrarError(elementoId, mensaje) {
         elemento.textContent = mensaje;
         elemento.style.display = 'block';
     }
+
+    // Mejora agregada por Tomás Ramírez: resaltar campo con error
+    if (elemento && elementoId.startsWith('error-')) {
+        const campo = document.getElementById(elementoId.replace('error-', '').replace('-', '_'));
+        if (campo) campo.style.border = '1px solid #e74c3c';
+    }
 }
 
 // Función para limpiar mensajes de error
@@ -20,6 +26,12 @@ function limpiarError(elementoId) {
     if (elemento) {
         elemento.textContent = '';
         elemento.style.display = 'none';
+    }
+
+    // Mejora agregada por Tomás Ramírez: quitar borde al corregir el error
+    if (elemento && elementoId.startsWith('error-')) {
+        const campo = document.getElementById(elementoId.replace('error-', '').replace('-', '_'));
+        if (campo) campo.style.border = '';
     }
 }
 
